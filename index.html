@@ -3,10 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="style.css">
+
     <title>Library</title>
 </head>
 <body>
-    <h1>Library</h1>
+    <header>
+        <h1>Library</h1>
+    </header>
+
+    <div class="add-book">
+        <button>Add Book +</button>
+        <form action="" class="add-book-form">
+            <label for="" class="title-label">Title</label>
+            <input type="text" class="title">
+            <label for="" class="author-label">Author</label>
+            <input type="text" class="author">
+            <label for="" class="pages-label">Pages</label>
+            <input type="text" class="pages">
+            <div class="read-wrapper">
+                <label for="" class="read-label">Read?</label>
+                <input type="checkbox" class="read">
+            </div>
+            <input type="submit" value="Submit" class="submit"/>
+        </form>
+    </div>
+    
     <script src="index.js"></script>
 </body>
 </html>

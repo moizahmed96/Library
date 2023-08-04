@@ -1,0 +1,34 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+header {
+    margin: 1rem 0;
+}
+
+.add-book {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 0;
+}
+
+.add-book button {
+    align-self: center;
+    margin: 1rem 0;
+}
+
+.add-book-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.submit {
+    align-self: center;
+}
+
+.title, .author, .pages, .read-wrapper, .submit {
+    margin-bottom: 0.5rem;
+}
