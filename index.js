@@ -2,11 +2,9 @@ const title = document.querySelector(".title")
 const author = document.querySelector(".author")
 const pages = document.querySelector(".pages")
 const read = document.querySelector(".read")
-const submit = document.querySelector("submit")
+const submit = document.querySelector(".submit")
 
 const formField = document.querySelectorAll(".form-field")
-
-console.log()
 
 const main = document.querySelector(".main")
 
@@ -23,9 +21,13 @@ function addBookToLibrary() {
 
 
     const checkFormField = () => {
-        formField.forEach(field => {
-            return field.textContent
-        })
+            submit.addEventListener("click", (e) => {
+                if (title.textContent == "" || author.textContent == "" || pages.textContent == "" || read.textContent == "") {
+                    alert("Please enter all the details about your book!")
+                } else {
+                    console.log("hello")
+                }
+            })
     }
 
     checkFormField()
