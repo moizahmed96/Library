@@ -1,3 +1,4 @@
+const addBookButton = document.querySelector(".add-book-button")
 const title = document.querySelector(".title")
 const author = document.querySelector(".author")
 const pages = document.querySelector(".pages")
@@ -18,14 +19,14 @@ function Book(title, author, pages) {
 
 function addBookToLibrary() {
 
-
     const checkFormField = () => {
             submit.addEventListener("click", (e) => {
                 if (title.value == "" || author.value == "" || pages.value == "") {
                     alert("Please enter all the details about your book!")
                 } else {
                     const newBook = new Book(title.value,  author.value,  pages.value)
-                    console.log(newBook)
+                    myLibrary.push(newBook)
+                    console.log(myLibrary)
                 }
             })
     }
