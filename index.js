@@ -9,7 +9,7 @@ const formField = document.querySelectorAll(".form-field")
 
 const main = document.querySelector(".main")
 
-let myLibrary = [{ title: "avengers", author: "stan lee", pages: "21"}];
+let myLibrary = [];
 
 function Book(title, author, pages) {
     this.title = title
@@ -19,19 +19,31 @@ function Book(title, author, pages) {
 
 function addBookToLibrary() {
 
-    const checkFormField = () => {
-            submit.addEventListener("click", (e) => {
-                if (title.value == "" || author.value == "" || pages.value == "") {
-                    alert("Please enter all the details about your book!")
-                } else {
-                    const newBook = new Book(title.value,  author.value,  pages.value)
-                    myLibrary.push(newBook)
-                    console.log(myLibrary)
-                }
-            })
+    const displayBook = () => {
+        console.log(myLibrary)
+        myLibrary.forEach((book, index, array) => {
+            const newDiv = document.createElement("div")
+            newDiv.textContent = `${book.title}, ${book.author}, ${book.pages}`
+            main.appendChild(newDiv)
+        })
     }
 
-    checkFormField()
+    const addBook = () => {
+        submit.addEventListener("click", (e) => {
+            e.preventDefault()
+            if (title.value == "" || author.value == "" || pages.value == "") {
+                alert("Please enter all the details about your book!")
+            } else {
+                const newBook = new Book(title.value, author.value, pages.value)
+                myLibrary.push(newBook)
+                displayBook()
+            }
+        })
+    }
+
+    addBook()
+
+
 }
 
 addBookToLibrary()
