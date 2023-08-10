@@ -29,6 +29,23 @@ header {
     align-self: center;
 }
 
-.title, .author, .pages, .read-wrapper, .submit {
+.title,
+.author,
+.pages,
+.read-wrapper,
+.submit {
     margin-bottom: 0.5rem;
+}
+
+.main {
+    display: flex;
+    justify-content: space-around;
+    min-width: 100%;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.book {
+    flex: 1 1 160px;
+    text-align: center;
 }

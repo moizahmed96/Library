@@ -23,7 +23,9 @@ function addBookToLibrary() {
         console.log(myLibrary)
         myLibrary.forEach((book, index, array) => {
             const newDiv = document.createElement("div")
-            newDiv.textContent = `${book.title}, ${book.author}, ${book.pages}`
+            newDiv.className = "book"
+            newDiv.setAttribute("id", `${index}`)
+            newDiv.textContent = `${book.title} | ${book.author} | ${book.pages}`
             main.appendChild(newDiv)
         })
     }
@@ -36,6 +38,7 @@ function addBookToLibrary() {
             } else {
                 const newBook = new Book(title.value, author.value, pages.value)
                 myLibrary.push(newBook)
+                main.textContent = ""
                 displayBook()
             }
         })
