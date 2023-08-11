@@ -20,6 +20,10 @@ header {
     margin: 1rem 0;
 }
 
+.section {
+    display: none;
+}
+
 .add-book-form {
     display: flex;
     flex-direction: column;

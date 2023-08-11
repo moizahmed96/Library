@@ -1,4 +1,6 @@
 const addBookButton = document.querySelector(".add-book-button")
+const section = document.querySelector(".section")
+const addBookForm = document.querySelector(".add-book-form")
 const title = document.querySelector(".title")
 const author = document.querySelector(".author")
 const pages = document.querySelector(".pages")
@@ -18,6 +20,15 @@ function Book(title, author, pages) {
 }
 
 function addBookToLibrary() {
+
+    addBookButton.addEventListener("click", () => {
+        if (section.style.display == "") {
+            section.style.display = "block"
+            console.log(section.style.display)
+        } else {
+            section.style.display = ""
+        }
+    })
 
     const displayBook = () => {
         console.log(myLibrary)
