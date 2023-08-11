@@ -1,5 +1,5 @@
 const addBookButton = document.querySelector(".add-book-button")
-const section = document.querySelector(".section")
+const section = document.querySelector(".section.form")
 const addBookForm = document.querySelector(".add-book-form")
 const title = document.querySelector(".title")
 const author = document.querySelector(".author")
@@ -37,7 +37,15 @@ function addBookToLibrary() {
             newDiv.className = "book"
             newDiv.setAttribute("id", `${index}`)
             newDiv.textContent = `${book.title} | ${book.author} | ${book.pages}`
+
+            const deleteButton = document.createElement("button")
+            deleteButton.className = "delete-button"
+            deleteButton.textContent = "Delete"
+
+            newDiv.appendChild(deleteButton)
+
             main.appendChild(newDiv)
+
         })
     }
 
@@ -50,6 +58,7 @@ function addBookToLibrary() {
                 const newBook = new Book(title.value, author.value, pages.value)
                 myLibrary.push(newBook)
                 main.textContent = ""
+                section.style.display = ""
                 displayBook()
             }
         })
