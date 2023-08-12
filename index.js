@@ -59,7 +59,9 @@ function addBookToLibrary() {
                 myLibrary.push(newBook)
                 main.textContent = ""
                 section.style.display = ""
+                addBookForm.reset()
                 displayBook()
+
             }
         })
     }
