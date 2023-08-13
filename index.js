@@ -51,7 +51,14 @@ function addBookToLibrary() {
 
     document.addEventListener("click", (e) => {
         if (e.target.className == "delete-button") {
-            console.log(e.target.id)
+            var bookId = e.target.id
+            myLibrary.filter((book, index) => {
+              if (index == bookId) {
+                myLibrary.splice(index, 1)
+                e.target.parentNode.remove()
+                console.log(myLibrary)
+              }
+            })
         }
     })
 
