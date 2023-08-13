@@ -24,7 +24,6 @@ function addBookToLibrary() {
     addBookButton.addEventListener("click", () => {
         if (section.style.display == "") {
             section.style.display = "block"
-            console.log(section.style.display)
         } else {
             section.style.display = ""
         }
@@ -35,12 +34,13 @@ function addBookToLibrary() {
         myLibrary.forEach((book, index, array) => {
             const newDiv = document.createElement("div")
             newDiv.className = "book"
-            newDiv.setAttribute("id", `${index}`)
             newDiv.textContent = `${book.title} | ${book.author} | ${book.pages}`
 
             const deleteButton = document.createElement("button")
             deleteButton.className = "delete-button"
             deleteButton.textContent = "Delete"
+            deleteButton.setAttribute("id", `${index}`)
+
 
             newDiv.appendChild(deleteButton)
 
@@ -48,6 +48,12 @@ function addBookToLibrary() {
 
         })
     }
+
+    document.addEventListener("click", (e) => {
+        if (e.target.className == "delete-button") {
+            console.log(e.target.id)
+        }
+    })
 
     const addBook = () => {
         submit.addEventListener("click", (e) => {
