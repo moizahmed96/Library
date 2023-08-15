@@ -4,7 +4,6 @@ const addBookForm = document.querySelector(".add-book-form")
 const title = document.querySelector(".title")
 const author = document.querySelector(".author")
 const pages = document.querySelector(".pages")
-const read = document.querySelector(".read")
 const submit = document.querySelector(".submit")
 
 const formField = document.querySelectorAll(".form-field")
@@ -13,10 +12,11 @@ const main = document.querySelector(".main")
 
 let myLibrary = [];
 
-function Book(title, author, pages) {
+function Book(title, author, pages, read) {
     this.title = title
     this.author = author
     this.pages = pages
+    this.read = read
 }
 
 function addBookToLibrary() {
@@ -34,14 +34,21 @@ function addBookToLibrary() {
         myLibrary.forEach((book, index, array) => {
             const newDiv = document.createElement("div")
             newDiv.className = "book"
-            newDiv.textContent = `${book.title} | ${book.author} | ${book.pages}`
+
+            const newPara = document.createElement("p")
+            newPara.textContent = `${book.title} | ${book.author} | ${book.pages}`
+            newDiv.append(newPara)
+
+            const readStatus = document.createElement("button")
+            readStatus.className = "read-status"
+            readStatus.textContent = "Read"
+            readStatus.setAttribute("id", `${index}`)
+            newDiv.appendChild(readStatus)
 
             const deleteButton = document.createElement("button")
             deleteButton.className = "delete-button"
             deleteButton.textContent = "Delete"
             deleteButton.setAttribute("id", `${index}`)
-
-
             newDiv.appendChild(deleteButton)
 
             main.appendChild(newDiv)
@@ -50,14 +57,20 @@ function addBookToLibrary() {
     }
 
     document.addEventListener("click", (e) => {
+        if (e.target.className == "read-status") {
+            e.target.style.backgroundColor = "green"
+        }
+    })
+
+    document.addEventListener("click", (e) => {
         if (e.target.className == "delete-button") {
             var bookId = e.target.id
             myLibrary.filter((book, index) => {
-              if (index == bookId) {
-                myLibrary.splice(index, 1)
-                e.target.parentNode.remove()
-                console.log(myLibrary)
-              }
+                if (index == bookId) {
+                    myLibrary.splice(index, 1)
+                    e.target.parentNode.remove()
+                    console.log(myLibrary)
+                }
             })
         }
     })
@@ -80,7 +93,6 @@ function addBookToLibrary() {
     }
 
     addBook()
-
 
 }
 
