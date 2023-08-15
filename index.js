@@ -12,11 +12,11 @@ const main = document.querySelector(".main")
 
 let myLibrary = [];
 
-function Book(title, author, pages, read) {
+function Book(title, author, pages, readStatus) {
     this.title = title
     this.author = author
     this.pages = pages
-    this.read = read
+    this.readStatus = readStatus
 }
 
 function addBookToLibrary() {
@@ -45,22 +45,24 @@ function addBookToLibrary() {
             readStatus.setAttribute("id", `${index}`)
             newDiv.appendChild(readStatus)
 
+            if (book.readStatus == undefined || book.readStatus == "false") {
+                readStatus.style.background = ""
+            } else if (book.readStatus == "true") {
+                readStatus.style.background = "green"
+            }
+
             const deleteButton = document.createElement("button")
             deleteButton.className = "delete-button"
             deleteButton.textContent = "Delete"
             deleteButton.setAttribute("id", `${index}`)
             newDiv.appendChild(deleteButton)
 
+
+
             main.appendChild(newDiv)
 
         })
     }
-
-    document.addEventListener("click", (e) => {
-        if (e.target.className == "read-status") {
-            e.target.style.backgroundColor = "green"
-        }
-    })
 
     document.addEventListener("click", (e) => {
         if (e.target.className == "delete-button") {
@@ -69,6 +71,20 @@ function addBookToLibrary() {
                 if (index == bookId) {
                     myLibrary.splice(index, 1)
                     e.target.parentNode.remove()
+                    console.log(myLibrary)
+                }
+            })
+        }
+        if (e.target.className == "read-status") {
+            var bookId = e.target.id
+            myLibrary.filter((book, index) => {
+                if (index == bookId && myLibrary[bookId].readStatus == "true") {
+                    myLibrary[bookId].readStatus = "false"
+                    e.target.style.background = "#EFEFEF"
+                    console.log(myLibrary)
+                } else if (index == bookId) {
+                    myLibrary[bookId].readStatus = "true"
+                    e.target.style.background = "green"
                     console.log(myLibrary)
                 }
             })
