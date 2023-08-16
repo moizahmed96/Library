@@ -57,8 +57,6 @@ function addBookToLibrary() {
             deleteButton.setAttribute("id", `${index}`)
             newDiv.appendChild(deleteButton)
 
-
-
             main.appendChild(newDiv)
 
         })
@@ -84,7 +82,7 @@ function addBookToLibrary() {
                     console.log(myLibrary)
                 } else if (index == bookId) {
                     myLibrary[bookId].readStatus = "true"
-                    e.target.style.background = "green"
+                    e.target.style.background = "#74DD6C"
                     console.log(myLibrary)
                 }
             })
