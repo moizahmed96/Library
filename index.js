@@ -48,7 +48,7 @@ function addBookToLibrary() {
             if (book.readStatus == undefined || book.readStatus == "false") {
                 readStatus.style.background = ""
             } else if (book.readStatus == "true") {
-                readStatus.style.background = "green"
+                readStatus.style.background = "#74DD6C"
             }
 
             const deleteButton = document.createElement("button")
