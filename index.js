@@ -11,6 +11,7 @@ const formField = document.querySelectorAll(".form-field")
 const main = document.querySelector(".main")
 
 let myLibrary = [];
+let allBooks = Array.from(main.children)
 
 class Book {
     constructor(title, author, pages, readStatus) {
@@ -32,10 +33,10 @@ function addBookToLibrary() {
     })
 
     const displayBook = () => {
-        console.log(myLibrary)
         myLibrary.forEach((book, index, array) => {
             const newDiv = document.createElement("div")
             newDiv.className = "book"
+            newDiv.setAttribute("id", `${index}`)
 
             const newPara = document.createElement("p")
             newPara.textContent = `${book.title} | ${book.author} | ${book.pages}`
@@ -74,6 +75,10 @@ function addBookToLibrary() {
                     console.log(myLibrary)
                 }
             })
+            while (main.firstChild) {
+                main.firstChild.remove()
+            }
+            displayBook()
         }
         if (e.target.className == "read-status") {
             var bookId = e.target.id
